@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+  
+ 
+
+ <ui:composition template="/template.xhtml">
+   <ui:define name="body">
+
+<!-- cards container !-->       
+<div class="cards-container" style="margin-left:50px">
+           
+           <!-- first card !-->
+  <div class="card" >
+  <div class="card-header" style="background-color:#689F38;border-color: #689F38;">Véhicules</div>
+  <div class="card-main" style="background-color:#A5D6A7;">
+  <i class="fa fa-car" style="font-size: 36px;color:#F1F8E9;margin-bottom: 5px;"></i>
+  <div class="main-description">
+  <h:outputText value=" #{vehiculeController.count()}"></h:outputText> 
+  </div>
+  </div>
+  </div>
+           
+           
+                   <!-- second card !-->
+  <div class="card" >
+  <div class="card-header" style="background-color:#d32f2f;border-color: #d32f2f;">Chauffeurs</div>
+  <div class="card-main" style="background-color:#ef9a9a">
+  <i class="fa fa-user" style="font-size: 36px;color:#F1F8E9;margin-bottom: 5px;" ></i>
+  <div class="main-description">
+      <h:outputText value=" #{chauffeurController.count()}"></h:outputText><br></br> 
+   </div>
+  </div>
+  </div> 
+           
+      
+                   
+                   <!-- third card !-->
+  <div class="card" >
+  <div class="card-header" style="background-color:#F57C00;border-color: #F57C00;">Consommation totale carburant</div>
+  <div class="card-main" style="background-color:#FFAB91">
+  <i class="fa fa-tint" style="font-size: 36px;color:#F1F8E9;margin-bottom: 5px;"></i>
+  <div class="main-description">
+  <h:outputText value=" #{consommationCarburantController.getsum()} L"></h:outputText> 
+  </div>
+  </div>
+  </div>      
+
+                   
+     <!-- fourth card !-->
+  <div class="card" >
+  <div class="card-header" style="background-color:#00BCD4;border-color: #00BCD4;">Cout d'acquisition</div>
+  <div class="card-main" style="background-color:#80DEEA">
+  <i class="fa fa-dollar"  style="font-size: 36px;color:#F1F8E9;margin-bottom: 5px;"></i>
+  <div class="main-description">
+  <h:outputText value=" #{vehiculeController.coutacquisition()} DT"></h:outputText> 
+  </div>
+  </div>
+  </div>         
+       
+ </div>
+       
+<p:separator>
+    
+</p:separator>
+   
+
+<!-- dashbord body !-->
+       
+<div class="cards-container">
+         
+    
+    <!-- a vertical partition !-->
+
+    <div class="vertical-partition">  
+        
+        <!-- first horizantal partition -->
+        <div class="horizontal-partition">
+       <!-- Pannes --> 
+       
+       <div class="contain" style="margin-top: 10px">
+       <div class="head" style="background:#47a3da;">Pannes</div>
+       <div class="main">
+       <p:knob foregroundColor="#c44569" backgroundColor="#dcdde1" disabled="true" labelTemplate="{value}%" value="#{panneController.count()}"/>
+       </div>
+       </div>
+         
+        <!--Depense -->     
+       <div class="contain" style="margin-top: 10px">
+       <div class="head" style="background:#47a3da;">repartition des dépenses
+       </div>
+       <div class="main">
+       <p:chart type="donut" model="#{chartView.donutModel2}"  />
+       </div>
+       </div>
+       <!-- fin depense -->
+       </div>
+       <!-- end first horizantl partition -->
+      
+    
+       <div class="horizontal-partition">
+        <!--Marque -->   
+        
+     <div class="contain" style="margin-top: 10px">
+       <div class="head" style="background:#47a3da;">répartition des marques
+       
+       </div>
+       <div class="main">
+      
+       <p:chart type="donut" model="#{chartViewvehiculemarque.donutModel2}"  />
+       </div>
+       </div>
+	   
+	   
+	     <div class="contain" style="margin-top: 10px">
+       <div class="head" style="background:#47a3da;"> type affecation</div>
+       <div class="main">
+       <p:chart type="donut" model="#{chartViewtypeaffectation.donutModel2}"  />
+       </div>
+       </div>
+      <!-- fin marque -->
+    
+    
+        <!--type affectation -->     
+     
+       
+       </div>
+    
+    
+    
+    
+    </div>
+    <!--  end of vertical partition !-->   
+    
+  
+    
+    
+    
+   
+    
+    
+    <!--Alertes ****** -->  
+       
+       <div class="contain" style="margin-top: 10px;margin-left: auto;height: 400px;">
+       <div class="head" style="background:#F44336;"><i class="fa fa-warning"></i>  Alertes génerales
+       </div>
+       <div class="main">
+           <h:form>
+           <h:commandLink  action="#{vehiculeController.prepareExpiredVignette()}" immediate="true"><h:outputText value=" Vignettes expirées ( #{vehiculeController.getexpiredvignette().size()} ) "></h:outputText></h:commandLink><br></br> 
+           <h:commandLink  action="#{vehiculeController.prepareExpiredtechnicalVisite()}" immediate="true"><h:outputText value=" Visites techniques expirées ( #{vehiculeController.getexpiredtechnicalvisit().size()} ) "></h:outputText></h:commandLink><br></br>
+           <h:commandLink  action="#{vehiculeController.prepareExpiredInsurance()}" immediate="true"><h:outputText value=" Assurances expirées ( #{vehiculeController.getexpiredinsurance().size()} ) "></h:outputText></h:commandLink><br></br>
+           <h:outputText value=" Permis expirées ( #{chauffeurController.getnbexpiredpermis()} ) "></h:outputText><br></br>
+           
+           </h:form>
+       </div>
+       </div>
+
+
+    
+  
+ <!-- fin alertes !-->
+ 
+
+
+ 
+<script type="text/javascript">
+    PrimeFaces.locales['tr'] = {
+        closeText: 'kapat',
+        prevText: 'geri',
+        nextText: 'ileri',
+        currentText: 'bugün',
+        monthNames: ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran',
+            'Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'],
+        monthNamesShort: ['Oca','Şub','Mar','Nis','May','Haz',
+            'Tem','Ağu','Eyl','Eki','Kas','Ara'],
+        dayNames: ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'],
+        dayNamesShort: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
+        dayNamesMin: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
+        weekHeader: 'Hf',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: '',
+        month: 'Ay',
+        week: 'Hafta',
+        day: 'Gün',
+        allDayText : 'Tüm Gün'
+    };
+</script>
+<style type="text/css">
+    .value {
+        width: 1000px;
+    }
+</style>
+
+
+
+
+
+
+<!-- end of dashbord body !-->
+</div>
+</ui:define>
+</ui:composition>
+</html>
+

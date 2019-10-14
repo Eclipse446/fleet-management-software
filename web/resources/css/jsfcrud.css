@@ -1,0 +1,307 @@
+/* dropdown item */
+.dropbtn {
+   
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    cursor: pointer;
+    background-color: #3e8e41;
+}
+
+/* end drop down item */
+
+
+
+/* horizantal element'scontainer */
+
+.horizontal-container {
+margin-left:10px;
+margin-bottom: 20px;
+width: 100%;
+display: flex;
+flex-direction:row;
+}
+
+
+
+/*current user dash setting */
+.userdash{
+background-color:#EFEBE9;
+width:100%;
+color:#000;
+font-size: 20px;
+margin-top: 0px;
+height: 50px;
+padding-top: 15px;
+}
+
+
+/* cards on the top */
+.card {
+  width:350px;                 /* Set width of cards */
+                        /* Set up Border */
+  border-radius: 4px;           /* Slightly Curve edges */
+  overflow: hidden;             /* Fixes the corners */
+  display: flex;             /* Children use Flexbox */
+  flex-direction: column;
+  margin-left: 10px;/* Rotate Axis */
+}
+
+.card-header {
+  color: #F1F8E9;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 300;
+  border-bottom: 1px solid #00ACC1;
+  background-color:#00b8d4;
+  padding: 5px 10px;
+
+}
+
+.card-main {
+  display: flex;              /* Children use Flexbox */
+  flex-direction:column;        /* Rotate Axis to Vertical */
+  justify-content: center;    /* Group Children in Center */
+  align-items: center;        /* Group Children in Center (+axis) */
+  padding: 10px 0;            /* Add padding to the top/bottom */
+}
+
+
+
+
+
+.main-description {
+  color: #F1F8E9;
+  font-size: 30px;
+  text-align: center;
+}
+
+
+
+.cards-container {
+margin-left:10px;
+margin-bottom: 20px;
+width: 100%;
+display: flex;
+flex-direction:row;
+}
+/* end card on the top
+*/
+
+/*first partition container*/
+.vertical-partition{
+display: flex;
+flex-direction:column;
+}
+
+.horizontal-partition{
+display: flex;
+flex-direction:row;
+}
+
+/* the old stuff */
+
+/* html body */
+body, html {
+ font-size: medium!important;
+  color: #000 !important;
+  font-family: "Open Sans", sans-serif !important; 
+  margin: 0px;
+
+}
+
+/* inside panel cards */
+/* simple card container */
+div.contain
+{
+
+margin-left: 10px;    
+width:400px;
+}
+
+div.head
+{
+    
+    padding: 9px 19px 7px; 
+    color: #fff; 
+    font-weight:bold;
+  
+
+     
+}
+
+div.main{
+    border:1px solid #ccc;
+    padding:15px;
+    text-align:left;
+
+    
+}
+
+/* to display data liste without border */
+.datalist-noborder .ui-widget-content {
+border: none;
+}
+
+
+/* i don't now what is this for :')'*/
+root { 
+    display:inline-block;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+
+/* fixed footer */ 
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0px;
+   width: 100%;
+   border: 1px solid #90b4bd;
+   color: white;
+   text-align: left;
+   margin-top: 5px;
+}
+
+
+
+/* menu :'(   */
+.tutorial ul li ul,
+.tutorial ul li ul:before,
+.tutorial ul li ul:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+
+.tutorial {
+ 
+  font-size: 20px;
+  line-height: 13px;
+  width: 100%;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
+  background-color:#f9f9f9;
+  margin-bottom: 30px;
+  border-bottom: 6px solid #47a3da;
+}
+
+
+.tutorial ul {
+  font-size: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+ 
+}
+.tutorial ul li {
+ 
+  font-size: 17px;
+  font-weight:normal;
+  color:#333;
+  display: inline-block;
+  padding: 20px;
+  position: relative;
+}
+.tutorial ul li ul {
+  display: none;
+}
+.tutorial ul li:hover {
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
+.tutorial ul li:hover ul {
+  display: block;
+  margin-top: 20px;
+  width: 300px;
+  left: 0;
+  position: absolute;
+}
+.tutorial ul li:hover ul li {
+  display: block;
+  background-color: #e7e7e7;
+}
+.tutorial ul li:hover ul li span {
+  float: right;
+  color: #f9f9f9;
+  background-color: #F03861;
+  padding: 2px 5px;
+  text-align: center;
+  font-size: .8rem;
+  border-radius: 3px;
+}
+.tutorial ul li:hover ul li:hover {
+  background-color: #e0e0e0;
+}
+.tutorial ul li:hover ul li:hover span {
+  background-color: #ee204e;
+}
+
+
+/* primefaces stuff */
+
+
+.ui-growl-item {
+background-color: #0d77b6 !important;
+color: #ccc !important ;
+
+}
+
+.ui-growl-item-container {
+
+border: #0d77b6 !important;
+}
+
+
+/* legendde of  field set */
+
+legend {
+    color:#0277BD;
+    font-size: 20px;
+    font-weight: bold;
+  
+   
+}
+
+
+/* main title */
+.title{
+color:#0D47A1;
+}

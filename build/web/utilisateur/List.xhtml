@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:p="http://primefaces.org/ui"
+      >
+<ui:composition template="/template.xhtml">
+     
+        
+        
+<ui:define name="body">
+      
+
+<p:panel>   
+<h:form  id="f1">
+<p:growl id="growlIndex" showDetail="true" />
+    
+    <p:dataTable value="#{utilisateurController.items}" var="item" styleClass="borderless" id="table">
+        <f:facet name="header">
+        Liste des utilisateurs
+    </f:facet>
+    <p:column headerText="Identifiant">
+        <h:outputText value="#{item.login}" />
+    </p:column>
+ 
+    <p:column headerText="Mot de passe">
+        <h:outputText value="*******" />
+    </p:column>
+  
+            
+         <p:column style="width: 200px" headerText="Action">
+         <p:commandLink action="#{utilisateurController.prepareEdit}"><p:graphicImage value="/icon/edit.png" /></p:commandLink>
+         <p:commandLink action="#{utilisateurController.destroy}" update="f1" >
+         <p:graphicImage value="/icon/delete.png"  />
+<p:confirm header="Confirmation" message="Supprimer ?" icon="ui-icon-alert" />
+ <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" style="text-align: center">
+        <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>
+         </p:commandLink>
+         </p:column>  
+
+    
+    
+ 
+    
+    
+ </p:dataTable>
+    
+    
+    
+</h:form>
+</p:panel>
+    
+<div class="footer">
+  <p:commandLink style="margin-left: 15px"  action="#{utilisateurController.prepareCreate}"  ><p:graphicImage value="/icon/save.png"  title="Enregistrer" alt="Enregistrer"/></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="#{utilisateurController.prepareList}" update="@all" ><p:graphicImage value="/icon/list.png" title="Liste Utilisateur" alt="Liste Utilisateur" /></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="/Acceuil" ><p:graphicImage value="/icon/home.png" title="Acceuil" alt="Acceuil"/></p:commandLink>
+</div>     
+    
+
+
+
+   
+   
+   
+   
+</ui:define>
+</ui:composition>
+</html>

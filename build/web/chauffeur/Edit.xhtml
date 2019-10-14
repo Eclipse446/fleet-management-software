@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="ajouter"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+           
+    <h:form>
+     <p:growl id="growl" sticky="true" />    
+    <p:panel id="panel" header="Modifier  chauffeur" >
+        <h:panelGrid columns="2" cellpadding="5" cellspacing="5">
+                    <p:outputLabel for="code" value="Nom :"/>
+                    <p:inputText id="code" value="#{chauffeurController.selected.nom}"  size="30" required="true" requiredMessage="veuillez entrer le nom" >
+                     <f:validateRegex pattern="^[a-zA-Z]+$" />
+                    </p:inputText>
+                    
+                    <p:outputLabel for="libelle" value="Prénom :"/>
+                    <p:inputText id="libelle" value="#{chauffeurController.selected.prenom}" size="30"  required="true" requiredMessage="veuillez entrer le prénom">
+                       <f:validateRegex pattern="^[a-zA-Z]+$" />
+                    </p:inputText>
+                    <p:outputLabel for="cin" value="Cin :"/>
+                    <p:inputText id="cin" value="#{chauffeurController.selected.cin}" size="10"  required="true" requiredMessage="veuillez entrer le cin"/>
+<h:outputLabel value="Date d'expiration permis " for="date" />
+<p:calendar id="date" value="#{chauffeurController.selected.dateValiditePermis}" pattern="dd/MM/yyyy" effect="fold"  showOn="button" >
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</p:calendar>
+        
+        
+        
+        </h:panelGrid>
+    </p:panel>
+      
+       
+  <div class="footer">
+  <p:commandLink style="margin-left: 15px" action="#{chauffeurController.update}" update="growl"  ><p:graphicImage value="/icon/save.png"  title="Enregistrer" alt="Enregistrer"/></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="#{chauffeurController.prepareList}" immediate="true" ><p:graphicImage value="/icon/list.png" title="Liste Marques" alt="Liste Utilisateur" /></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="/Acceuil" immediate="true" ><p:graphicImage value="/icon/home.png" title="Acceuil" alt="Acceuil"/></p:commandLink>
+  </div> 
+     
+</h:form> 
+ 
+
+</ui:define>
+</ui:composition>
+</html>

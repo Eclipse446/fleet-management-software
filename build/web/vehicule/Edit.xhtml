@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Modifier vehicule"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+           
+
+ <div style=" margin-left: 10px;"><h2 class="title"> Modifier véhicule </h2></div>   
+ <p:separator />
+            
+ <h:form>
+
+
+
+ <fieldset>
+<legend>Informations génerales:</legend>
+ <h:panelGrid columns="6" cellpadding="5" cellspacing="5">
+            
+               <p:outputLabel for="immatriculation" value="Immatriculation "/>
+               <p:inputText id="immatriculation" value="#{vehiculeController.selected.immatriculation}"  size="30" />
+               
+               <p:outputLabel for="coutAcquisition" value="Coût d'acquisition "/>
+               <p:inputText id="coutAcquisition" value="#{vehiculeController.selected.coutAcquisition}"  size="10"  />
+               
+        
+               <p:outputLabel for="kilometrageActuel" value="Kilométrage Actuel "/>
+               <p:inputText id="kilometrageActuel" value="#{vehiculeController.selected.kilometrageActuel}" size="10"   />
+        
+        
+               <p:outputLabel for="numeroMoteur" value="Numéro du Moteur"/>
+               <p:inputText id="numeroMoteur" value="#{vehiculeController.selected.numeroMoteur}"  size="10" />
+        
+        
+               <p:outputLabel for="numeroChassis" value="Numéro du Chassis"/>
+               <p:inputText id="numeroChassis" value="#{vehiculeController.selected.numeroChassis}"   />
+        
+           
+               <p:outputLabel for="montantAnnuelleAssurance" value="Montant Annuel d'Assurance"/>
+               <p:inputText id="montantAnnuelleAssurance" value="#{vehiculeController.selected.montantAnnuelleAssurance}"  size="10" />
+        
+        
+               <p:outputLabel for="puissance" value="Puissance"/>
+               <p:inputText id="puissance" value="#{vehiculeController.selected.puissance}"  size="5"/>
+        
+               <p:outputLabel for="poid" value="Poid"/>
+               <p:inputText id="poid" value="#{vehiculeController.selected.poid}"  size="5" />
+    
+               
+       
+<p:outputLabel value="Date Mise en Circulation" for="dateMiseCirculation" />
+<p:calendar id="dateMiseCirculation" value="#{vehiculeController.selected.dateMiseCirculation}" pattern="dd/MM/yyyy" effect="fold"  showOn="button" >
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</p:calendar>
+      
+
+<p:outputLabel value="Date d'acquisition" for="dateAcquisition" />
+<p:calendar id="dateAcquisition" value="#{vehiculeController.selected.dateAcquisition}" pattern="dd/MM/yyyy" effect="fold"  showOn="button">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</p:calendar>
+
+               
+
+<p:outputLabel value="Modele" for="modele" />
+<p:autoComplete id="modele" dropdown="true" value="#{vehiculeController.selected.idModele}" completeMethod="#{vehiculeController.autocompleteModele}" var="result" itemLabel="#{result.libelle}" itemValue="#{result}">
+                <p:column>#{result.libelle}</p:column>
+                <p:ajax event="itemSelect" update="modele"/>
+            
+</p:autoComplete>
+
+
+<p:outputLabel value="Boite de vitesse" for="boitevitesse" />
+<p:autoComplete id="boitevitesse" dropdown="true" value="#{vehiculeController.selected.idTypeBoite}" completeMethod="#{vehiculeController.autocompleteboitevitesse}" var="result" itemLabel="#{result.libelle}" itemValue="#{result}">
+                <p:column>#{result.libelle}</p:column>
+                <p:ajax event="itemSelect" update="boitevitesse"/>
+            
+</p:autoComplete>
+ 
+ 
+ 
+<p:outputLabel value="Assurance" for="Assurance" />
+<p:autoComplete id="Assurance" dropdown="true" value="#{vehiculeController.selected.idAssurance}" completeMethod="#{vehiculeController.autocompleteassurance}" var="result" itemLabel="#{result.libelle}" itemValue="#{result}">
+                <p:column>#{result.libelle}</p:column>
+                <p:ajax event="itemSelect" update="Assurance"/>
+            
+</p:autoComplete>
+
+ 
+
+ 
+<p:outputLabel value="Type contrat d'assurance" for="typecontart" />
+<p:autoComplete id="typecontart" dropdown="true" value="#{vehiculeController.selected.idTypeContratAssurance}" completeMethod="#{vehiculeController.autocompleteTypeContratAssurance}" var="result" itemLabel="#{result.libelle}" itemValue="#{result}">
+                <p:column>#{result.libelle}</p:column>
+                <p:ajax event="itemSelect" update="typecontart"/>
+            
+</p:autoComplete>
+
+ 
+<p:outputLabel value="Type d'affectation" for="typeaffectation" />
+<p:autoComplete id="typeaffectation" dropdown="true" value="#{vehiculeController.selected.idAffectation}" completeMethod="#{vehiculeController.autocompleteTypeAffectation}" var="result" itemLabel="#{result.type}" itemValue="#{result}">
+                <p:column>#{result.type}</p:column>
+                <p:ajax event="itemSelect" update="typeaffectation"/>
+            
+</p:autoComplete>
+ 
+ 
+
+<p:outputLabel value="Type de carburant" for="typecarburant" />
+<p:autoComplete id="typecarburant" dropdown="true" value="#{vehiculeController.selected.idTypecarburant}" completeMethod="#{vehiculeController.autocompleteTypeCarburant}" var="result" itemLabel="#{result.libelle}" itemValue="#{result}">
+                <p:column>#{result.libelle}</p:column>
+                <p:ajax event="itemSelect" update="typeaffectation"/>
+            
+</p:autoComplete>
+ 
+ </h:panelGrid>            
+
+</fieldset>  
+
+ 
+  
+
+ <p:separator /> 
+ 
+ <div class="cards-container">
+ 
+
+<fieldset>
+<legend>Vignettes:</legend>
+<h:panelGrid  columns="2" style="margin-top: 5px ;margin-left: 10px; ">
+<p:outputLabel value="Date Debut Vignette" for="dateDebutVignette" />
+<p:calendar id="dateDebutVignette" value="#{vehiculeController.selected.dateDebutVignette}" pattern="dd/MM/yyyy"  effect="fold"  showOn="button">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</p:calendar>
+<p:outputLabel for="dateExpirationVignette" value="Date expiration Vignette" />
+<p:calendar id="dateExpirationVignette" value="#{vehiculeController.selected.dateExpirationVignette}" showOn="button"  pattern="dd/MM/yyyy" effect="fold">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</p:calendar>
+</h:panelGrid>  
+</fieldset>
+
+
+<!-- assurances -->
+<fieldset>
+<legend>Assurances:</legend>
+<h:panelGrid  columns="2" style="margin-top: 5px;margin-left: 10px;"> 
+<p:outputLabel for="dateDebutAssurance" value="Date debut assurance    " />
+<p:calendar id="dateDebutAssurance" value="#{vehiculeController.selected.dateDebutAssurance}" showOn="button"  pattern="dd/MM/yyyy" effect="fold">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</p:calendar>
+<p:outputLabel for="dateExpirationAssurance" value="Date expiration assurance    " />
+<p:calendar id="dateExpirationAssurance" value="#{vehiculeController.selected.dateExpirationAssurance}" showOn="button"  pattern="dd/MM/yyyy" effect="fold">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</p:calendar>
+</h:panelGrid> 
+</fieldset>
+
+
+<fieldset>
+<legend>Visite technique:</legend>
+    
+<h:panelGrid  columns="2" style="margin-top: 5px;margin-left: 10px;">
+<p:outputLabel for="dateDebutVisiteTechnique" value="Date debut visite technique" />
+<p:calendar id="dateDebutVisiteTechnique" value="#{vehiculeController.selected.dateDebutVisiteTechnique}" showOn="button" pattern="dd/MM/yyyy" effect="fold">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</p:calendar>
+<p:outputLabel for="dateExpirationVisiteTechnique" value="Date expiration visite technique" />
+<p:calendar id="dateExpirationVisiteTechnique" value="#{vehiculeController.selected.dateExpirationVisiteTechnique}" showOn="button" pattern="dd/MM/yyyy" effect="fold">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</p:calendar>
+</h:panelGrid>            
+
+</fieldset>
+
+ </div>
+      
+ 
+  
+ 
+ 
+ 
+ 
+ <!-- footer -->
+ <div class="footer">
+  <p:commandLink style="margin-left: 15px" action="#{vehiculeController.update}"  ><p:graphicImage value="/icon/save.png"  title="Enregistrer" /></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="#{vehiculeController.prepareList}"  ><p:graphicImage value="/icon/list.png" title="Liste Vehicule" alt="Liste Utilisateur" /></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="/Acceuil"  ><p:graphicImage value="/icon/home.png" title="Acceuil" alt="Acceuil"/></p:commandLink>
+  </div> 
+ 
+</h:form>  
+
+</ui:define>
+</ui:composition>
+</html>

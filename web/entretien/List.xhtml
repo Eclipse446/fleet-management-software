@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+      >
+
+    
+<ui:composition template="/template.xhtml">
+ <ui:define name="body">
+
+
+
+<p:panel header="Liste des entretiens">   
+<h:form  id="f1">
+<p:growl id="growlIndex" showDetail="true" />
+ 
+  <h:commandLink style="margin-left: 5px;margin-right: 5px">
+                <p:graphicImage value="/icon/excel.png" width="24"/>
+                <p:dataExporter type="xls" target="tbl" fileName="entretiens" />
+            </h:commandLink> 
+    
+    <p:dataTable value="#{entretienController.items}" var="item" id="tbl" emptyMessage="Aucun enregistrement trouvé" >
+    
+       
+         <p:column headerText="Véhicule" filterBy="#{item.idVehicule.immatriculation}">
+        <h:outputText value="#{item.idVehicule.immatriculation}" />
+       </p:column> 
+        
+        
+        
+       <p:column headerText="Date ">
+        <h:outputText value="#{item.date}">
+        <f:convertDateTime pattern="dd/MM/yyyy" />
+        </h:outputText>
+       </p:column>
+ 
+   
+        
+        
+        
+        <p:column headerText="Date d'execution">
+        <h:outputText value="#{item.dateExecution}">
+        <f:convertDateTime pattern="dd/MM/yyyy" />
+        </h:outputText>
+        </p:column>
+        
+        
+        
+       <p:column headerText="Execution" filterBy="#{item.execution}">
+        <h:outputText value="#{item.execution ? 'Oui' : 'Non' }" />
+       </p:column> 
+  
+       
+        
+        
+         <p:column headerText="Operation effectué" filterBy="#{item.idOperation.libelle}">
+        <h:outputText value="#{item.idOperation.libelle} " />
+       </p:column>
+        
+      <p:column headerText="Cout">
+        <h:outputText value="#{item.cout}"  style="color: red;float:right;"/>
+       </p:column> 
+            
+         
+        <p:column style="width: 90px" headerText="Action">
+        <p:commandLink action="#{entretienController.prepareEdit}"><p:graphicImage value="/icon/edit.png" /></p:commandLink>
+        <p:commandLink action="#{entretienController.destroy}" update="f1" >
+         <p:graphicImage value="/icon/delete.png"  />
+ 
+<p:confirm header="Confirmation" message="êtes vous sûr de vouloir supprimer cet entretien ?" icon="ui-icon-alert" />
+ <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" style="text-align: center">
+        <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>
+        
+        
+        
+        </p:commandLink>
+         </p:column>  
+
+    
+</p:dataTable>
+
+</h:form>
+</p:panel>
+    
+
+       
+<div class="footer">
+<p:commandLink style="margin-left: 15px"  action="#{entretienController.prepareCreate}"  ><p:graphicImage value="/icon/save.png"  title="Enregistrer" alt="Enregistrer"/></p:commandLink>
+<p:commandLink style="margin-left: 15px" action="#{entretienController.prepareList}"  ><p:graphicImage value="/icon/list.png" title="Liste Pannes" alt="Liste Pannes" /></p:commandLink>
+<p:commandLink style="margin-left: 15px" action="/Acceuil" ><p:graphicImage value="/icon/home.png" title="Acceuil" alt="Acceuil"/></p:commandLink>
+</div>  
+ 
+  
+   
+ 
+
+ 
+ 
+</ui:define>
+</ui:composition>
+
+</html>

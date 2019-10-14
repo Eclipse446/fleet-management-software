@@ -1,0 +1,531 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="2.0"
+    xmlns="http://java.sun.com/xml/ns/javaee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+    <application>
+        <resource-bundle>
+            <base-name>/Bundle</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/Bundle_marque</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/Bundle2</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/Bundle2</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/Bundle3</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/Bundle4</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/Bundle5</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/Bundle6</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/Bundle8</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/Bundle9</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/Bundle10</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/Bundle11</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/Bundle12</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/Bundle13</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/Bundle1</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/Bundle15</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+    </application>
+     
+   <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+    <navigation-case>
+        <from-action>#{authentification.seconnecter()}</from-action>
+        <from-outcome>Acceuil</from-outcome>
+        <to-view-id>/Acceuil.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+   
+  
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Create_user</from-outcome>
+         <to-view-id>/utilisateur/Create.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>List_user</from-outcome>
+         <to-view-id>/utilisateur/List.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+   
+   <navigation-rule>
+     <navigation-case>
+         <from-outcome>Edit_user</from-outcome>
+         <to-view-id>/utilisateur/Edit.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Create_vehicule</from-outcome>
+         <to-view-id>/vehicule/Create.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+ 
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>List_vehicule</from-outcome>
+         <to-view-id>/vehicule/List.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+   
+    <navigation-rule>
+     <navigation-case>
+         <from-outcome>Edit_vehicule</from-outcome>
+         <to-view-id>/vehicule/Edit.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+ 
+ 
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>expired_vig</from-outcome>
+         <to-view-id>/vehicule/expiredvignette.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+ 
+ 
+ 
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>expired_ins</from-outcome>
+         <to-view-id>/vehicule/expiredinsurance.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+ 
+ 
+  <navigation-rule>
+     <navigation-case>
+         <from-outcome>expired_vt</from-outcome>
+         <to-view-id>/vehicule/expiredtechnicalvisit.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+ 
+
+
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>List_marque</from-outcome>
+         <to-view-id>/marque/List.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Create_marque</from-outcome>
+         <to-view-id>/marque/Create.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Edit_marque</from-outcome>
+         <to-view-id>/marque/Edit.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+
+
+
+
+
+
+<navigation-rule>
+     <navigation-case>
+         <from-outcome>List_modele</from-outcome>
+         <to-view-id>/modele/List.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Create_modele</from-outcome>
+         <to-view-id>/modele/Create.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Edit_modele</from-outcome>
+         <to-view-id>/modele/Edit.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+
+<navigation-rule>
+     <navigation-case>
+         <from-outcome>List_typeaffecation</from-outcome>
+         <to-view-id>/typeAffectation/List.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Create_typeaffecation</from-outcome>
+         <to-view-id>/typeAffectation/Create.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Edit_typeaffecation</from-outcome>
+         <to-view-id>/typeAffectation/Edit.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+
+
+
+
+<navigation-rule>
+     <navigation-case>
+         <from-outcome>List_typecarburant</from-outcome>
+         <to-view-id>/typeCarburant/List.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Create_typecarburant</from-outcome>
+         <to-view-id>/typeCarburant/Create.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Edit_typecarburant</from-outcome>
+         <to-view-id>/typeCarburant/Edit.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+
+
+
+<navigation-rule>
+     <navigation-case>
+         <from-outcome>List_typeboitevitesse</from-outcome>
+         <to-view-id>/typeBoiteVitesse/List.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Create_typeboitevitesse</from-outcome>
+         <to-view-id>/typeBoiteVitesse/Create.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Edit_typeboitevitesse</from-outcome>
+         <to-view-id>/typeBoiteVitesse/Edit.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+<navigation-rule>
+     <navigation-case>
+         <from-outcome>List_contratassurance</from-outcome>
+         <to-view-id>/typeContratAssurance/List.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Create_contratassurance</from-outcome>
+         <to-view-id>/typeContratAssurance/Create.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Edit_contratassurance</from-outcome>
+         <to-view-id>/typeContratAssurance/Edit.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+
+
+
+
+
+
+
+
+
+<navigation-rule>
+     <navigation-case>
+         <from-outcome>List_visitetechnique</from-outcome>
+         <to-view-id>/visiteTechnique/List.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Create_visitetechnique</from-outcome>
+         <to-view-id>/visiteTechnique/Create.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Edit_visitetechnique</from-outcome>
+         <to-view-id>/visiteTechnique/Edit.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+
+
+
+<navigation-rule>
+     <navigation-case>
+         <from-outcome>List_panne</from-outcome>
+         <to-view-id>/panne/List.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Create_panne</from-outcome>
+         <to-view-id>/panne/Create.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Edit_panne</from-outcome>
+         <to-view-id>/panne/Edit.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+
+<navigation-rule>
+     <navigation-case>
+         <from-outcome>List_affectationchauffeur</from-outcome>
+         <to-view-id>/affectationChauffeur/List.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Create_affectationchauffeur</from-outcome>
+         <to-view-id>/affectationChauffeur/Create.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+<navigation-rule>
+     <navigation-case>
+         <from-outcome>Edit_affectationchauffeur</from-outcome>
+         <to-view-id>/affectationChauffeur/Edit.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+<navigation-rule>
+     <navigation-case>
+         <from-outcome>List_entretien</from-outcome>
+         <to-view-id>/entretien/List.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Create_entretien</from-outcome>
+         <to-view-id>/entretien/Create.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+
+
+
+
+<navigation-rule>
+     <navigation-case>
+         <from-outcome>List_consommationcarburant</from-outcome>
+         <to-view-id>/consommationCarburant/List.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Create_consommationcarburant</from-outcome>
+         <to-view-id>/consommationCarburant/Create.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+   
+   
+   
+   <navigation-rule>
+     <navigation-case>
+         <from-outcome>List_memo</from-outcome>
+         <to-view-id>/memoVehicule/List.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Create_memo</from-outcome>
+         <to-view-id>/memoVehicule/Create.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+<navigation-rule>
+     <navigation-case>
+         <from-outcome>List_chauffeur</from-outcome>
+         <to-view-id>/chauffeur/List.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Create_chauffeur</from-outcome>
+         <to-view-id>/chauffeur/Create.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+<navigation-rule>
+     <navigation-case>
+         <from-outcome>Edit_chauffeur</from-outcome>
+         <to-view-id>/chauffeur/Edit.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+
+
+<navigation-rule>
+     <navigation-case>
+         <from-outcome>List_depense</from-outcome>
+         <to-view-id>/depense/List.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Create_depense</from-outcome>
+         <to-view-id>/depense/Create.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+
+
+<navigation-rule>
+     <navigation-case>
+         <from-outcome>List_fr</from-outcome>
+         <to-view-id>/fournisseur/List.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Create_fr</from-outcome>
+         <to-view-id>/fournisseur/Create.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Edit_fr</from-outcome>
+         <to-view-id>/fournisseur/Edit.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+
+
+<navigation-rule>
+     <navigation-case>
+         <from-outcome>List_comp</from-outcome>
+         <to-view-id>/compagnieAssurance/List.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+ <navigation-rule>
+     <navigation-case>
+         <from-outcome>Create_comp</from-outcome>
+         <to-view-id>/compagnieAssurance/Create.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+   
+    <navigation-rule>
+     <navigation-case>
+         <from-outcome>edit_comp</from-outcome>
+         <to-view-id>/compagnieAssurance/Edit.xhtml</to-view-id>
+    </navigation-case>
+   </navigation-rule>
+
+
+
+
+</faces-config>

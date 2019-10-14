@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:p="http://primefaces.org/ui"
+      >
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Modifier une panne"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+           
+    <h:form>
+  <p:growl id="growl"  sticky="true" />
+        <p:panel id="panel" header="Modifier une panne" >
+        <h:panelGrid columns="2" cellpadding="5" cellspacing="5">
+                   
+<h:outputLabel value="Date " for="date" />
+<p:calendar id="date" value="#{panneController.selected.date}" pattern="dd/MM/yyyy" effect="fold"  showOn="button" required="true" requiredMessage="veuillez entrer la date">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</p:calendar>  
+               
+     
+     
+      
+<p:outputLabel for="depart" value="Départ" />
+        <p:selectOneMenu id="depart" value="#{panneController.selected.depart}"  >
+            <f:selectItem  itemValue="" />
+            <f:selectItems value="#{panneController.villes}" />
+        </p:selectOneMenu>
+
+
+<p:outputLabel for="dest" value="Déstination" />
+        <p:selectOneMenu id="dest" value="#{panneController.selected.destination}" >
+            <f:selectItem  itemValue="" />
+            <f:selectItems value="#{panneController.villes}" />
+        </p:selectOneMenu>
+
+
+
+
+
+<p:outputLabel value="Véhicule" for="vehicule" />
+<p:autoComplete id="vehicule" dropdown="true" value="#{panneController.selected.idVehicule}" completeMethod="#{panneController.autocompleteVehicule}" var="result" itemLabel="#{result.immatriculation}" itemValue="#{result}">
+                <p:column>#{result.immatriculation}</p:column>
+                <p:ajax event="itemSelect" update="vehicule"/>
+            
+</p:autoComplete>
+  
+  
+
+
+<p:outputLabel value="Chauffeur" for="chauffeur" />
+<p:autoComplete id="chauffeur" dropdown="true" value="#{panneController.selected.idChauffeur}" completeMethod="#{panneController.autocompletechauffeur}" var="result" itemLabel="#{result.nom}" itemValue="#{result}">
+                <p:column>#{result.nom}</p:column>
+                <p:ajax event="itemSelect" update="chauffeur"/>
+            
+</p:autoComplete>
+
+   
+    
+
+
+
+<p:outputLabel value="Type de panne" for="typepanne" />
+<p:autoComplete id="typepanne" dropdown="true" value="#{panneController.selected.idTypepanne}" completeMethod="#{panneController.autocompletetypepanne}" var="result" itemLabel="#{result.libelle}" itemValue="#{result}">
+                <p:column>#{result.libelle}</p:column>
+                <p:ajax event="itemSelect" update="chauffeur"/>
+            
+</p:autoComplete>
+
+   
+</h:panelGrid>
+</p:panel>    
+      
+  <div class="footer">
+  <p:commandLink style="margin-left: 15px" action="#{panneController.update}" update="growl" ><p:graphicImage value="/icon/save.png"  title="Enregistrer" alt="Enregistrer"/></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="#{panneController.prepareList}" immediate="true" ><p:graphicImage value="/icon/list.png" title="Liste Pannes" alt="Liste Utilisateur" /></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="/Acceuil" immediate="true" ><p:graphicImage value="/icon/home.png" title="Acceuil" alt="Acceuil"/></p:commandLink>
+  </div> 
+     
+</h:form> 
+        
+        
+        
+        
+        
+        
+        
+        
+</ui:define>
+</ui:composition>
+
+</html>

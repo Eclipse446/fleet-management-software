@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    <h:head>
+        <title>index</title>
+
+
+<h:outputStylesheet name="css/jsfcrud.css"/>
+
+    </h:head>
+    <h:body>
+      
+        
+
+        <h:form id="formIndex">
+            <p:growl id="growlIndex" showDetail="true" sticky="false"/>
+
+            <p:dialog id="dialog" header="Connexion" widgetVar="dlg"  resizable="false" visible="true" draggable="false" closable="false">
+
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel for="username" value="Identifiant :" />
+                    <p:inputText value="#{authentification.login}" id="username" required="true" requiredMessage="veuillez entrer un identifiant" size="30" />
+
+                    <h:outputLabel for="password" value="Mot de passe :" />
+                    <p:password value="#{authentification.password}" id="password" required="true"  requiredMessage="veuillez entrer un mot de passe" size="30"/>
+
+                    <p:commandButton id="loginButton" value="Connexion"  update="growlIndex" action="#{authentification.seconnecter()}"  oncomplete="handleLoginRequest(xhr, status, args)"/>
+               
+         <p:commandButton value="réinitialiser"  immediate="true" ajax="false" style="margin-right:20px;">
+         <p:resetInput target="formIndex" />
+            </p:commandButton>        
+                
+                
+                </h:panelGrid>
+
+            </p:dialog>
+         
+        </h:form>
+          
+    
+</h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
+

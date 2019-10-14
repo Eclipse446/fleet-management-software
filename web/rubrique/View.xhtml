@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRubriqueTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRubriqueLabel_id}"/>
+                    <h:outputText value="#{rubriqueController.selected.id}" title="#{bundle.ViewRubriqueTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewRubriqueLabel_libelle}"/>
+                    <h:outputText value="#{rubriqueController.selected.libelle}" title="#{bundle.ViewRubriqueTitle_libelle}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{rubriqueController.destroyAndView}" value="#{bundle.ViewRubriqueDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewRubriqueEditLink}"/>
+                <br />
+                <h:commandLink action="#{rubriqueController.prepareCreate}" value="#{bundle.ViewRubriqueCreateLink}" />
+                <br />
+                <h:commandLink action="#{rubriqueController.prepareList}" value="#{bundle.ViewRubriqueShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewRubriqueIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

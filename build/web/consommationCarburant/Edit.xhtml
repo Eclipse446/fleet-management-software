@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:p="http://primefaces.org/ui"
+      >
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Modifier"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+           
+    <h:form>
+        <p:growl id="growl" sticky="true" />
+    <p:panel id="panel" header="Modifier consommation carburant">
+        <h:panelGrid columns="2" cellpadding="5" cellspacing="5">
+            
+<p:outputLabel value="Véhicule" for="vehicule" />
+<p:autoComplete id="vehicule" dropdown="true" value="#{consommationCarburantController.selected.idVehicule}" completeMethod="#{entretienController.autocompleteVehicule}" var="result" itemLabel="#{result.immatriculation}" itemValue="#{result}" required="true" requiredMessage="veuillez sélectionner le véhicule">
+                <p:column>#{result.immatriculation}</p:column>
+                <p:ajax event="itemSelect" update="vehicule"/>
+            
+</p:autoComplete>
+                   
+<p:outputLabel value="Chauffeur" for="chauffeur" />
+<p:autoComplete id="chauffeur" dropdown="true" value="#{consommationCarburantController.selected.idChauffeur}" completeMethod="#{panneController.autocompletechauffeur}" var="result" itemLabel="#{result.nom}" itemValue="#{result}" required="true" requiredMessage="veuillez sélectionner le chauffeur">
+                <p:column>#{result.nom}</p:column>
+                <p:ajax event="itemSelect" update="chauffeur"/>
+            
+</p:autoComplete>
+
+<h:outputLabel value="Date " for="date" />
+<p:calendar id="date" value="#{consommationCarburantController.selected.date}" pattern="dd/MM/yyyy" effect="fold"  showOn="button" required="true" requiredMessage="veuillez entrer la date">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</p:calendar>  
+               
+
+<p:outputLabel for="volume" value="Volume :"/>
+<p:inputText id="volume" value="#{consommationCarburantController.selected.volume}" size="5"  required="true" requiredMessage="veuillez entrer le volume"/>
+
+
+<p:outputLabel for="montant" value="Montant :"/>
+<p:inputText id="montant" value="#{consommationCarburantController.selected.montant}" size="5"  requiredMessage="veuillez entrer le montant"/>
+
+<p:outputLabel for="compteur" value="Compteur Kilométre :"/>
+<p:inputText id="compteur" value="#{consommationCarburantController.selected.compteurKilometre}" size="5"  />
+
+<p:outputLabel for="ref" value="Référence Bon :"/>
+<p:inputText id="ref" value="#{consommationCarburantController.selected.referenceBon}" size="30"  required="true" requiredMessage="veuillez entrer la réference du bon"/>
+
+
+
+
+
+<h:outputText value="Mouvement du caisse " />
+<p:selectBooleanButton id="value1" value="#{consommationCarburantController.selected.mouvementCaisse}" onLabel="Oui" offLabel="Non" style="width:60px" />
+
+
+
+
+  
+  
+
+
+   
+    
+
+
+
+
+
+
+
+        
+</h:panelGrid>
+</p:panel>
+      
+  <div class="footer">
+  <p:commandLink style="margin-left: 15px" action="#{consommationCarburantController.update}" update="growl"  ><p:graphicImage value="/icon/save.png"  title="Enregistrer" alt="Enregistrer"/></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="#{consommationCarburantController.prepareList}" immediate="true" ><p:graphicImage value="/icon/list.png" title="Liste Pannes" alt="Liste Utilisateur" /></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="/Acceuil" immediate="true" ><p:graphicImage value="/icon/home.png" title="Acceuil" alt="Acceuil"/></p:commandLink>
+  </div> 
+     
+</h:form> 
+        
+
+
+</ui:define>
+    </ui:composition>
+
+    
+
+</html>

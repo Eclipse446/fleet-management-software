@@ -1,0 +1,295 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+    
+      xmlns:f="http://java.sun.com/jsf/core">
+ 
+<h:head>
+<h:outputStylesheet name="css/jsfcrud.css"/>
+</h:head>
+ 
+    <h:body>
+    
+     <!-- html 5 menus -_- !-->
+     
+     <!-- user setting bar -->
+     <h:form>
+       <div class="userdash">
+           
+           
+ 
+<div style="margin-left: 15px">
+ 
+
+
+<i class="fa fa-user"></i><h:outputText style="margin-left:5px" value="Bonjour #{authentification.login}"></h:outputText> 
+<div class="dropdown" style="margin-right:15px">
+ <i class="fa fa-cog" style="margin-left:15px"></i>
+  <div class="dropdown-content">
+      
+<h:commandLink  action="#{utilisateurController.prepareList()}" immediate="true">
+<h:outputText value="Utilisateurs"></h:outputText>  
+</h:commandLink>
+    
+    
+
+
+  
+</div>
+</div>
+<h:commandLink action="#{authentification.Deconnecter()}" immediate="true" ><i class="fa fa-sign-out" style="margin-left:15px;margin-right: 10px;"></i></h:commandLink>      
+  
+  
+          
+       
+       
+         </div>
+       
+       </div>
+     
+     
+     </h:form>
+ 
+     
+     
+   
+     
+     
+
+     
+     
+     
+     <!-- main menu -->  
+<h:form>
+ <div class="tutorial">
+    <ul>
+     
+
+   
+        
+<!-- vehicules -->
+ <li><h:graphicImage value="/icon/car.png"/>Vehicules <i class="fa fa-sort-down"></i>
+        <ul>
+<li>
+<h:commandLink  action="#{vehiculeController.prepareCreate()}" immediate="true">  
+<h:outputText value="Ajouter Véhicule"></h:outputText>  
+</h:commandLink>
+</li>
+            
+ <li>
+<h:commandLink  action="#{vehiculeController.prepareList()}" immediate="true">  
+<h:outputText value="Liste des Véhicules"></h:outputText>  
+</h:commandLink>    
+</li>
+
+       
+        </ul>
+      </li>
+    
+    
+       
+       
+       <li><h:graphicImage value="/icon/panne.png"/><span></span>Pannes <i class="fa fa-sort-down"></i>
+        <ul>
+<li>
+<h:commandLink  action="#{panneController.prepareCreate()}" immediate="true">  
+<h:outputText value="Enregistrer panne"></h:outputText>  
+</h:commandLink>
+</li>
+            
+ <li>
+<h:commandLink  action="#{panneController.prepareList()}" immediate="true">  
+<h:outputText value="Consulter les pannes"></h:outputText>  
+</h:commandLink>    
+</li>
+       
+        </ul>
+      </li>
+       
+       
+       
+       
+       <li><h:graphicImage value="/icon/vt.png"/><span></span>Visites techniques <i class="fa fa-sort-down"></i>
+        <ul>
+<li>
+<h:commandLink  action="#{visiteTechniqueController.prepareCreate()}" immediate="true">  
+<h:outputText value="Enregistrer visite technique"></h:outputText>  
+</h:commandLink>
+</li>
+            
+ <li>
+     <h:commandLink  action="#{visiteTechniqueController.prepareList()}" immediate="true">  
+<h:outputText value="Consulter les visites techniques"></h:outputText>  
+</h:commandLink>    
+</li>
+       
+        </ul>
+      </li>  
+    
+    
+         <li><h:graphicImage value="/icon/entretien.png"/>Entretiens <i class="fa fa-sort-down"></i>
+        <ul>
+<li>
+<h:commandLink  action="#{entretienController.prepareCreate()}" immediate="true">  
+<h:outputText value="Enregistrer entretien"></h:outputText>  
+</h:commandLink>
+</li>
+            
+ <li>
+     <h:commandLink  action="#{entretienController.prepareList()}" immediate="true">  
+<h:outputText value="Consulter les entretiens"></h:outputText>  
+</h:commandLink>    
+</li>
+       
+        </ul>
+      </li> 
+    
+       
+       
+        <li><h:graphicImage value="/icon/dash.png"/>Affectation des chauffeurs <i class="fa fa-sort-down"></i>
+        <ul>
+
+<li>
+<h:commandLink  action="#{affectationChauffeurController.prepareCreate()}" immediate="true">  
+<h:outputText value="Ajouter une affectation"></h:outputText>  
+</h:commandLink>
+</li>
+            
+ <li>
+ <h:commandLink  action="#{affectationChauffeurController.prepareList()}" immediate="true">  
+<h:outputText value="Consulter les affectations"></h:outputText>  
+</h:commandLink>
+</li>
+        </ul>
+        </li>   
+       
+      <li><h:graphicImage value="/icon/driver.png"/>Chauffeurs <i class="fa fa-sort-down"></i>
+        <ul>
+
+<li>
+<h:commandLink  action="#{chauffeurController.prepareCreate()}" immediate="true">  
+<h:outputText value="Ajouter chauffeur"></h:outputText>  
+</h:commandLink>
+ </li>
+            
+ <li>
+<h:commandLink  action="#{chauffeurController.prepareList()}" immediate="true">  
+<h:outputText value="Consulter les chauffeurs"></h:outputText>  
+</h:commandLink>
+</li>
+            
+
+       
+        </ul>
+      </li> 
+    
+       
+       
+       
+          <li><h:graphicImage value="/icon/fuel.png"/>Carburant <i class="fa fa-sort-down"></i>
+        <ul>
+
+<li>
+<h:commandLink  action="#{consommationCarburantController.prepareCreate()}" immediate="true">  
+<h:outputText value="Ajouter une consommation"></h:outputText>  
+</h:commandLink>
+</li>
+            
+ <li>
+<h:commandLink  action="#{consommationCarburantController.prepareList()}" immediate="true">  
+<h:outputText value="Consulter les consommations"></h:outputText>  
+</h:commandLink>
+</li>
+            
+
+       
+        </ul>
+      </li>
+    
+       
+       
+       
+       
+                 <li><h:graphicImage value="/icon/money.png"/>Dépense <i class="fa fa-sort-down"></i>
+        <ul>
+
+<li>
+<h:commandLink  action="#{depenseController.prepareCreate()}" immediate="true">  
+<h:outputText value="Ajouter une dépense"></h:outputText>  
+</h:commandLink>
+</li>
+            
+ <li>
+<h:commandLink  action="#{depenseController.prepareList()}" immediate="true">  
+<h:outputText value="Consulter les dépenses"></h:outputText>  
+</h:commandLink>
+</li>
+            
+
+       
+        </ul>
+      </li>
+       
+       
+           <!-- occurence -->
+<li>Extra<i class="fa fa-sort-down"></i>
+        <ul>
+
+<li>
+<h:commandLink  action="#{marqueController.prepareList()}" immediate="true">  
+<h:outputText value="Marques"></h:outputText>  
+</h:commandLink>
+</li>
+            
+ <li>
+<h:commandLink  action="#{modeleController.prepareList()}" immediate="true">  
+<h:outputText value="Modéles"></h:outputText>  
+</h:commandLink>
+</li>
+            
+
+  <li>
+<h:commandLink  action="#{fournisseurController.prepareList()}" immediate="true">  
+<h:outputText value="Fournisseurs"></h:outputText>  
+</h:commandLink>
+</li>
+       
+
+  <li>
+<h:commandLink  action="#{compagnieAssuranceController.prepareList()}" immediate="true">  
+<h:outputText value="Compagnies d'assurances"></h:outputText>  
+</h:commandLink>
+</li>
+        
+            
+  <li>
+<h:commandLink  action="#{typeAffectationController.prepareList()}" immediate="true">  
+<h:outputText value="Type d'affectation"></h:outputText>  
+</h:commandLink>
+</li>
+        
+  </ul>
+</li>
+       
+       
+       
+<!-- fin des options !--> 
+ </ul>
+ </div> 
+ </h:form>   
+     
+     
+
+      
+      
+        <ui:insert name="body">Default Body
+        </ui:insert>
+        
+
+    
+    
+</h:body>
+</html>

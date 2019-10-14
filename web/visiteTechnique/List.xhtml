@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+
+ <h:head>
+<title>Liste</title>
+<h:outputStylesheet name="css/jsfcrud.css"/>
+</h:head>
+    
+<ui:composition template="/template.xhtml">
+ <ui:define name="body">
+
+
+
+<p:panel header="Liste des visites techniques">   
+<h:form  id="f1">
+<p:growl id="growlIndex" showDetail="true" />
+ 
+     <h:commandLink style="margin-left: 5px;margin-right: 5px">
+                <p:graphicImage value="/icon/excel.png" width="24"/>
+                <p:dataExporter type="xls" target="tbl" fileName="visites techniques" />
+            </h:commandLink> 
+    
+<p:dataTable value="#{visiteTechniqueController.items}" var="item" emptyMessage="Aucun enregistrement trouvé" scrollable="true" scrollHeight="150">
+   <p:column headerText="date"  filterBy="#{item.dateVisite}">
+        <h:outputText value="#{item.dateVisite}" >
+        <f:convertDateTime pattern="dd/MM/yyyy" />
+        </h:outputText>
+       </p:column>
+ 
+   
+       <p:column headerText="Vehicule" filterBy="#{item.idVehicule.immatriculation}">
+        <h:outputText value="#{item.idVehicule.immatriculation}" />
+       </p:column> 
+  
+      
+       <p:column headerText="Cout">
+        <h:outputText value="#{item.cout}" style="color: red;float:right;" />
+       </p:column> 
+  
+            
+         
+        <p:column style="width: 90px" headerText="Action">
+        <p:commandLink action="#{visiteTechniqueController.prepareEdit}"><p:graphicImage value="/icon/edit.png" /></p:commandLink>
+        <p:commandLink action="#{visiteTechniqueController.destroy}" update="f1" >
+            <p:graphicImage value="/icon/delete.png"  />
+        <p:confirm header="Confirmation" message="êtes vous sûr de vouloir supprimer cette visite technique ?" icon="ui-icon-alert" />
+ <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" style="text-align: center">
+        <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>
+        
+        
+        </p:commandLink>
+         </p:column>  
+
+    
+</p:dataTable>
+
+</h:form>
+</p:panel>
+    
+
+       
+<div class="footer">
+<p:commandLink style="margin-left: 15px"  action="#{VisiteTechniqueController.prepareCreate}"  ><p:graphicImage value="/icon/save.png"  title="Enregistrer" alt="Enregistrer"/></p:commandLink>
+<p:commandLink style="margin-left: 15px" action="#{VisiteTechniqueController.prepareList}"  >
+ <p:graphicImage value="/icon/list.png" title="Liste Utilisateur" alt="Liste Utilisateur" />
+
+
+
+</p:commandLink>
+<p:commandLink style="margin-left: 15px" action="/Acceuil" ><p:graphicImage value="/icon/home.png" title="Acceuil" alt="Acceuil"/></p:commandLink>
+</div>  
+ 
+
+ 
+ 
+ 
+</ui:define>    
+</ui:composition>
+
+</html>

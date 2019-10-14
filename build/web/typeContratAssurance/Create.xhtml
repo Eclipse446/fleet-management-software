@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+
+<h:head>
+        <title>Ajout Utilisateur</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+</h:head>
+  
+    <ui:composition template="/template.xhtml">
+   <ui:define name="body">
+ 
+<h:form>
+    <p:panel id="panel" header="Ajouter type contrat assurance">
+        <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="code" value="code"/>
+                    <p:inputText id="code" value="#{typeContratAssuranceController.selected.code}"  size="30" />
+                    <p:outputLabel for="libelle" value="libelle :"/>
+                    <p:inputText id="libelle" value="#{typeContratAssuranceController.selected.libelle}" size="30"  />
+               
+        </h:panelGrid>
+    </p:panel>
+      
+ 
+       
+  <div class="footer">
+  <p:commandLink style="margin-left: 15px" action="#{typeContratAssuranceController.create}"  ><p:graphicImage value="/icon/save.png"  title="Enregistrer" alt="Enregistrer"/></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="#{typeContratAssuranceController.prepareList}" immediate="true" ><p:graphicImage value="/icon/list.png" title="Liste Utilisateur" alt="Liste Utilisateur" /></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="/Acceuil" immediate="true" ><p:graphicImage value="/icon/home.png" title="Acceuil" alt="Acceuil"/></p:commandLink>
+  </div> 
+ </h:form>     
+ 
+
+</ui:define>
+</ui:composition>
+</html>

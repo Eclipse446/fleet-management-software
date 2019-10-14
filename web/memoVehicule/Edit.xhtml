@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Modifier Mémoire vehicule"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+           
+    <h:form>
+    <p:panel id="panel" header="Modifier Mémoire vehicule">
+    <h:panelGrid columns="2" cellpadding="5" cellspacing="5">
+                   
+            
+<h:outputLabel value="Date " for="date" />
+<p:calendar id="date" value="#{memoVehiculeController.selected.date}" pattern="dd/MM/yyyy" effect="fold"  showOn="button" >
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</p:calendar>         
+            
+                    
+  <h:outputLabel value="Commentaire " for="commentaire" />        
+  <p:inputTextarea id="commentaire" rows="6" cols="33"   value="#{memoVehiculeController.selected.commentaire}" />        
+            
+    
+  
+<p:outputLabel value="Vehicule" for="vehicule" />
+<p:autoComplete id="vehicule" dropdown="true" value="#{memoVehiculeController.selected.idVehicule}" completeMethod="#{memoVehiculeController.autocompleteVehicule}" var="result" itemLabel="#{result.immatriculation}" itemValue="#{result}">
+                <p:column>#{result.immatriculation}</p:column>
+                <p:ajax event="itemSelect" update="vehicule"/>
+            
+</p:autoComplete>
+            
+        
+        
+        
+        
+        
+        
+        
+    </h:panelGrid>
+    </p:panel>
+      
+       
+  
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+  <div class="footer">
+  <p:commandLink style="margin-left: 15px" action="#{memoVehiculeController.update}"  ><p:graphicImage value="/icon/save.png"  title="Enregistrer" alt="Enregistrer"/></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="#{memoVehiculeController.prepareList}" immediate="true" ><p:graphicImage value="/icon/list.png" title="Liste Marques" alt="Liste Utilisateur" /></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="/Acceuil" immediate="true" ><p:graphicImage value="/icon/home.png" title="Acceuil" alt="Acceuil"/></p:commandLink>
+  </div> 
+     
+</h:form> 
+ 
+    
+        
+        
+        
+        
+    </ui:define>
+    </ui:composition>
+
+
+</html>

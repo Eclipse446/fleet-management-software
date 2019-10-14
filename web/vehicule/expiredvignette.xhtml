@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+  >
+
+<ui:composition template="/template.xhtml">
+    <ui:define name="title">
+            <h:outputText value="liste vignette expirées"></h:outputText>
+        </ui:define>
+<ui:define name="body">
+    
+    
+    
+<div class="cards-container">
+    <h:form>
+  <div id='cssmenu'>
+   <ul>
+    <li><h:commandLink  action="#{vehiculeController.prepareExpiredVignette()}" immediate="true"><span>Vignettes expirés</span></h:commandLink></li>
+   <li><h:commandLink  action="#{vehiculeController.prepareExpiredInsurance()}" immediate="true"><span>Assurances expirés</span></h:commandLink></li>
+   <li><h:commandLink  action="#{vehiculeController.prepareExpiredtechnicalVisite()}" immediate="true"><span>Visites techniques expirés</span></h:commandLink></li>
+   </ul>
+   </div> 
+    </h:form>
+  
+  
+  
+<!-- a div to put dta table in it -->
+<p:panel header="Listes des véhicules(vignettes expirées)" style="margin-left: 5px;margin-right: 5px">
+
+<h:form id="f1">
+<p:growl id="growlIndex" showDetail="true" />
+
+<h:commandLink style="margin-left: 5px;margin-right: 5px">
+                <p:graphicImage value="/icon/excel.png" width="24"/>
+                <p:dataExporter type="xls" target="tbl" fileName="véhicules" />
+            </h:commandLink>
+
+
+
+
+<p:dialog header="Détails Véhicule" widgetVar="carDialog" modal="true" showEffect="bounce" hideEffect="fade" resizable="false">
+        <p:outputPanel id="carDetail" style="text-align:center;">
+            <p:panelGrid  columns="2">
+                <f:facet name="header">
+                    
+                </f:facet>
+ 
+                <h:outputText value="Id:" />
+                <h:outputText value="#{vehiculeController.current.id}" />
+ 
+                <p:outputLabel for="immatriculation" value="Immatriculation "/>
+               <h:outputText id="immatriculation" value="#{vehiculeController.current.immatriculation}"   />
+               
+               <p:outputLabel for="coutAcquisition" value="Coût d'acquisition "/>
+               <h:outputText id="coutAcquisition" value="#{vehiculeController.current.coutAcquisition}"    />
+               
+        
+               <p:outputLabel for="kilometrageActuel" value="Kilométrage Actuel "/>
+               <h:outputText id="kilometrageActuel" value="#{vehiculeController.current.kilometrageActuel}"   />
+        
+        
+               <p:outputLabel for="numeroMoteur" value="Numéro du Moteur"/>
+               <h:outputText id="numeroMoteur" value="#{vehiculeController.current.numeroMoteur}"  />
+        
+        
+               <p:outputLabel for="numeroChassis" value="Numéro du Chassis"/>
+               <h:outputText id="numeroChassis" value="#{vehiculeController.current.numeroChassis}"   />
+        
+           
+               <p:outputLabel for="montantAnnuelleAssurance" value="Montant Annuel d'Assurance"/>
+               <h:outputText id="montantAnnuelleAssurance" value="#{vehiculeController.current.montantAnnuelleAssurance}"  />
+        
+        
+               <p:outputLabel for="puissance" value="Puissance"/>
+               <h:outputText id="puissance" value="#{vehiculeController.current.puissance}" />
+        
+               <p:outputLabel for="poid" value="Poid"/>
+               <h:outputText id="poid" value="#{vehiculeController.current.poid}"   />
+       
+             </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+
+
+<!-- fin affichage details d'un vehicule -->
+
+
+<p:dataTable value="#{vehiculeController.getexpiredvignette()}" var="item" id="tbl" emptyMessage="Aucun enregistrement trouvé">
+          
+    
+    <p:column filterBy="#{item.immatriculation}" headerText="Immatriculation">
+          <h:outputText value="#{item.immatriculation}" />
+    </p:column>
+ 
+    <p:column headerText="Date debut vignette">
+        <h:outputText value="#{item.dateDebutVignette}" >
+        <f:convertDateTime pattern="dd/MM/yyyy" />
+        </h:outputText>
+    </p:column>
+  
+    
+     <p:column headerText="Date d'expiration vignette">
+        <h:outputText value="#{item.dateExpirationVignette}" style="color:red;">
+        <f:convertDateTime pattern="dd/MM/yyyy" />
+        </h:outputText>
+    </p:column>
+  
+  
+       <p:column headerText="Type d'affectation">
+        <h:outputText value="#{item.idAffectation.type}" />
+       </p:column>
+       
+       
+         
+       
+       
+       
+       
+       
+     
+   
+ 
+   
+   </p:dataTable>
+
+</h:form> 
+</p:panel> 
+    
+</div>
+ 
+  <div class="footer">
+  <p:commandLink style="margin-left: 15px" action="#{vehiculeController.prepareCreate}"><p:graphicImage value="/icon/save.png"  title="Ajouter un vehicule"/></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="#{vehiculeController.prepareList}"  ><p:graphicImage value="/icon/list.png" title="Liste Vehicule" /></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="/Acceuil" ><p:graphicImage value="/icon/home.png" title="Acceuil" alt="Acceuil"/></p:commandLink>
+
+  </div>        
+        
+  <style>
+      
+      .datatable_container{
+          margin:10px
+      }  
+      
+    #cssmenu {
+     padding: 0; margin: 0; border: 0; line-height: 1;}
+   
+    #cssmenu ul,
+    #cssmenu ul li{list-style: none; margin: 0; padding: 0;}
+
+    #cssmenu ul li.hover,
+    #cssmenu ul li:hover {position: relative; z-index: 599; cursor: default;}
+
+    #cssmenu {
+    width: 240px; 
+    height: 500px;
+    background: #f7f7f7; 
+    font-family:sans-serif; font-weight:normal;
+    zoom: 1; font-size: 20px;}
+   
+    #cssmenu:before {content: ''; display: block;}
+
+    #cssmenu:after{content: ''; display: table; clear: both;}
+    #cssmenu a {
+    display: block; padding: 15px 20px; color: #47a3da; text-decoration: none;
+    border-bottom: 1px solid #258ecd;
+    
+    }
+
+    #cssmenu > ul {
+    width: 240px;}
+    #cssmenu > ul > li > a {
+     border-left: 4px solid  #47a3da; color:  #47a3da;}
+
+    #cssmenu > ul > li a:hover {
+   background:  #47a3da; 
+   color:#f1f1f1;}
+      
+  </style>
+       
+
+</ui:define>
+</ui:composition>
+</html>

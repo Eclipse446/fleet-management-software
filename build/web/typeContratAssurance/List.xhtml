@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:p="http://primefaces.org/ui"
+      >
+ <h:head>
+        <title>Liste contrat assurance</title>
+<h:outputStylesheet name="css/jsfcrud.css"/>
+</h:head>
+    
+<ui:composition template="/template.xhtml">
+   <ui:define name="body">
+      
+
+<p:panel header="Liste Des contrats d'assurance">
+
+   
+<h:form  id="f1">
+    <p:growl id="growlIndex" showDetail="true" />
+ 
+   
+    
+        <p:dataTable value="#{typeContratAssuranceController.items}" var="item" >
+    <p:column headerText="Code">
+        <h:outputText value="#{item.code}" />
+    </p:column>
+ 
+    <p:column headerText="Libelle">
+        <h:outputText value="#{item.libelle}" />
+    </p:column>
+  
+            
+         <p:column style="width: 90px" headerText="Action">
+             <p:commandLink action="#{typeContratAssuranceController.prepareEdit}"><p:graphicImage value="/icon/edit.png" /></p:commandLink>
+ 
+           
+         <p:commandLink action="#{typeContratAssuranceController.destroy}" update="f1" ><p:graphicImage value="/icon/delete.png"  /></p:commandLink>
+    </p:column>  
+</p:dataTable>
+
+</h:form>
+</p:panel>
+    
+<div class="footer">
+  <p:commandLink style="margin-left: 15px"  action="#{typeContratAssuranceController.prepareCreate}"  ><p:graphicImage value="/icon/save.png"  title="Enregistrer" alt="Enregistrer"/></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="#{typeContratAssuranceController.prepareList}"  ><p:graphicImage value="/icon/list.png" title="Liste Utilisateur" alt="Liste Utilisateur" /></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="/Acceuil" ><p:graphicImage value="/icon/home.png" title="Acceuil" alt="Acceuil"/></p:commandLink>
+</div>     
+    
+
+</ui:define>
+</ui:composition>
+    
+
+</html>

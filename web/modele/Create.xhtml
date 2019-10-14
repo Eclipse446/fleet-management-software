@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="ajout Modéle"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            
+<h:form>
+<p:growl id="growl" sticky="true" /> 
+<p:panel id="panel" header="Ajouter modéle">
+<h:panelGrid columns="2" cellpadding="5" cellspacing="5">
+            
+            
+            
+<p:outputLabel value="Marque " for="marque" />
+<p:autoComplete id="marque"  dropdown="true" value="#{modeleController.selected.idMarque}" completeMethod="#{modeleController.autocompleteMarque}" var="result" itemLabel="#{result.libelle}" itemValue="#{result}" required="true" requiredMessage="veuillez entrer la marque">
+<p:column>#{result.libelle}</p:column>
+<p:ajax event="itemSelect" update="marque"/>
+</p:autoComplete>
+                   
+                   
+<p:outputLabel for="libelle" value="Libelle "/>
+<p:inputText id="libelle" value="#{modeleController.selected.libelle}"  required="true" requiredMessage="veuillez entrer le libellé"/>
+                    
+
+
+ <p:outputLabel for="code" value="Code "/>
+<p:inputText id="code" value="#{modeleController.selected.code}"  size="10" required="true" requiredMessage="veuillez entrer le code" />
+               
+</h:panelGrid>
+</p:panel>
+      
+       
+  
+<div class="footer">
+  <p:commandLink style="margin-left: 15px" action="#{modeleController.create}" update="growl" ><p:graphicImage value="/icon/save.png"  title="Enregistrer" alt="Enregistrer"/></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="#{modeleController.prepareList}" immediate="true" ><p:graphicImage value="/icon/list.png" title="Liste Marques" alt="Liste Utilisateur" /></p:commandLink>
+  <p:commandLink style="margin-left: 15px" action="/Acceuil" immediate="true" ><p:graphicImage value="/icon/home.png" title="Acceuil" alt="Acceuil"/></p:commandLink>
+  </div> 
+     
+</h:form> 
+
+</ui:define>
+</ui:composition>
+
+</html>
